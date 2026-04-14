@@ -7,9 +7,9 @@ import { ThemeToggle } from "@/components/theme-toggle";
 const projects = [
   { name: "V7", description: "AI training data platform", url: "https://v7labs.com" },
   { name: "Pipe", description: "Revenue-based financing", url: "https://pipe.com" },
-  { name: "Harmonic", description: "Company intelligence platform", url: "https://harmonic.ai" },
-  { name: "Peec", description: "AI-powered presentations", url: "https://peec.ai" },
-  { name: "Sazabi", description: "Luxury brand experience", url: "https://sazabi.com" },
+  { name: "Harmonic", description: "Search engine for VCs", url: "https://harmonic.ai" },
+  { name: "Peec", description: "AI search analytics for marketing teams", url: "https://peec.ai" },
+  { name: "Sazabi", description: "AI observability", url: "https://sazabi.com" },
 ];
 
 const socials = [
@@ -132,8 +132,18 @@ export default function Home() {
                 </svg>
                 <span className="text-xs font-medium text-muted uppercase tracking-wider">Listening</span>
               </div>
-              <p className="text-sm font-medium text-foreground">Midnight City</p>
-              <p className="text-xs text-muted mt-0.5">M83</p>
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://i.scdn.co/image/ab67616d00004851b7a3ceeb53378568f95a3023"
+                  alt="Hurry Up, We're Dreaming"
+                  className="w-12 h-12 rounded-md object-cover"
+                />
+                <div>
+                  <p className="text-sm font-medium text-foreground">Midnight City</p>
+                  <p className="text-xs text-muted mt-0.5">M83</p>
+                </div>
+              </div>
             </div>
 
             {/* Piano Widget */}
@@ -142,8 +152,18 @@ export default function Home() {
                 <span className="text-sm">🎹</span>
                 <span className="text-xs font-medium text-muted uppercase tracking-wider">Learning on Piano</span>
               </div>
-              <p className="text-sm font-medium text-foreground">The Shire</p>
-              <p className="text-xs text-muted mt-0.5">Howard Shore — The Lord of the Rings</p>
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://i.scdn.co/image/ab67616d00004851fe3b23913f1bfb4b6a4b4e86"
+                  alt="The Lord of the Rings: The Fellowship of the Ring Soundtrack"
+                  className="w-12 h-12 rounded-md object-cover"
+                />
+                <div>
+                  <p className="text-sm font-medium text-foreground">The Shire</p>
+                  <p className="text-xs text-muted mt-0.5">Howard Shore — The Lord of the Rings</p>
+                </div>
+              </div>
             </div>
 
             {/* Reading Widget */}
@@ -152,19 +172,42 @@ export default function Home() {
                 <span className="text-sm">📚</span>
                 <span className="text-xs font-medium text-muted uppercase tracking-wider">Reading</span>
               </div>
-              <p className="text-sm font-medium text-foreground">The Hard Thing About Hard Things</p>
-              <p className="text-xs text-muted mt-0.5">Ben Horowitz</p>
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://assets.literal.club/cover/2/clgx5o4zu1657110hmquz4kxes6.jpg"
+                  alt="The Hard Thing About Hard Things"
+                  className="w-12 h-16 rounded-md object-cover"
+                />
+                <div>
+                  <p className="text-sm font-medium text-foreground">The Hard Thing About Hard Things</p>
+                  <p className="text-xs text-muted mt-0.5">Ben Horowitz</p>
+                </div>
+              </div>
             </div>
           </div>
         </Section>
 
         {/* Fun */}
         <Section id="fun" title="Fun">
-          <div className="border border-dashed border-border rounded-xl p-8 text-center">
+          <a
+            href="/fun"
+            className="group flex items-center justify-between border border-dashed border-border rounded-xl p-6 hover:bg-ring transition-colors"
+            data-interactive
+          >
             <p className="text-sm text-muted">
-              Fun components and interactions coming soon.
+              Experiments, components, and interactions.
             </p>
-          </div>
+            <svg
+              className="w-4 h-4 text-muted group-hover:translate-x-0.5 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
         </Section>
 
         {/* Connect */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,8 +10,11 @@ const SECTIONS = [
   { id: "about", label: "About", icon: "👤" },
   { id: "projects", label: "Projects", icon: "🛠" },
   { id: "currently", label: "Currently", icon: "🎵" },
-  { id: "fun", label: "Fun", icon: "✨" },
   { id: "connect", label: "Connect", icon: "💬" },
+];
+
+const PAGES = [
+  { label: "Fun", path: "/fun", icon: "✨" },
 ];
 
 const LINKS = [
@@ -24,6 +28,7 @@ const LINKS = [
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -88,6 +93,25 @@ export function CommandMenu() {
                     >
                       <span className="w-5 text-center opacity-60">{s.icon}</span>
                       {s.label}
+                    </Command.Item>
+                  ))}
+                </Command.Group>
+
+                <Command.Separator className="h-px bg-border my-1" />
+
+                <Command.Group heading="Pages">
+                  {PAGES.map((p) => (
+                    <Command.Item
+                      key={p.label}
+                      value={p.label}
+                      onSelect={() => {
+                        setOpen(false);
+                        router.push(p.path);
+                      }}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-foreground data-[selected=true]:bg-ring transition-colors"
+                    >
+                      <span className="w-5 text-center opacity-60">{p.icon}</span>
+                      {p.label}
                     </Command.Item>
                   ))}
                 </Command.Group>
