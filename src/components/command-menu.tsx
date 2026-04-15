@@ -100,7 +100,7 @@ const PAGES = [
 
 const LINKS = [
   { label: "Email", url: "mailto:david@bielenbeck.me", icon: <Icon.Mail /> },
-  { label: "Twitter", url: "https://twitter.com/davidbielenberg", icon: <Icon.Twitter /> },
+  { label: "X", url: "https://x.com/davidbielenberg", icon: <Icon.Twitter /> },
   { label: "LinkedIn", url: "https://linkedin.com/in/davidbielenberg", icon: <Icon.Linkedin /> },
   { label: "Instagram", url: "https://instagram.com/davidbielenberg", icon: <Icon.Instagram /> },
   { label: "GitHub", url: "https://github.com/davidexo/bielenberg-me", icon: <Icon.Github /> },

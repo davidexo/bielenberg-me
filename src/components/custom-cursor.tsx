@@ -81,7 +81,10 @@ export function CustomCursor() {
         />
       </motion.div>
 
-      {/* Hover cursor — single pill with icon + label */}
+      {/* Hover cursor — single pill with icon + label.
+          The motion.div is positioned exactly at the cursor.
+          The inner pill is translated -50% on Y so the cursor
+          point sits at the vertical center / left edge of the pill. */}
       <motion.div
         className="pointer-events-none fixed top-0 left-0 z-[9999]"
         style={{ x, y }}
@@ -93,7 +96,7 @@ export function CustomCursor() {
       >
         <div
           className="flex items-center gap-1.5 bg-[#FF6A00] text-white pl-2 pr-2.5 py-1 rounded-full whitespace-nowrap shadow-lg"
-          style={{ marginLeft: 6, marginTop: 6 }}
+          style={{ transform: "translateY(-50%)" }}
         >
           <svg
             width="12"

@@ -16,7 +16,7 @@ const projects = [
 ];
 
 const socials = [
-  { name: "Twitter", url: "https://twitter.com/davidbielenberg" },
+  { name: "X", url: "https://x.com/davidbielenberg" },
   { name: "LinkedIn", url: "https://linkedin.com/in/davidbielenberg" },
   { name: "Instagram", url: "https://instagram.com/davidbielenberg" },
   { name: "GitHub", url: "https://github.com/davidbielenberg" },
