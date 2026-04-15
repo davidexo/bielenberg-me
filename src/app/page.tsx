@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Section } from "@/components/section";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ReadingWidget } from "@/components/reading-widget";
 
 const projects = [
   { name: "V7", description: "AI training data platform", url: "https://v7labs.com" },
@@ -166,25 +167,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Reading Widget */}
-            <div className="border border-border rounded-xl p-4 hover:bg-ring transition-colors sm:col-span-2">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm">📚</span>
-                <span className="text-xs font-medium text-muted uppercase tracking-wider">Reading</span>
-              </div>
-              <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://assets.literal.club/cover/2/clgx5o4zu1657110hmquz4kxes6.jpg"
-                  alt="The Hard Thing About Hard Things"
-                  className="w-12 h-16 rounded-md object-cover"
-                />
-                <div>
-                  <p className="text-sm font-medium text-foreground">The Hard Thing About Hard Things</p>
-                  <p className="text-xs text-muted mt-0.5">Ben Horowitz</p>
-                </div>
-              </div>
-            </div>
+            {/* Reading Widget — pulls live from Literal */}
+            <ReadingWidget />
           </div>
         </Section>
 
