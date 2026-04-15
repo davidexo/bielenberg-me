@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Section } from "@/components/section";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeSwitch } from "@/components/theme-switch";
 import { ReadingWidget } from "@/components/reading-widget";
 import { ListeningWidget } from "@/components/listening-widget";
 import { PianoWidget } from "@/components/piano-widget";
@@ -53,7 +53,7 @@ export default function Home() {
             >
               <kbd className="font-mono">⌘K</kbd>
             </button>
-            <ThemeToggle />
+            <ThemeSwitch />
           </motion.div>
         </header>
 
@@ -91,7 +91,7 @@ export default function Home() {
 
         {/* Projects */}
         <Section id="projects" title="Selected Projects">
-          <div className="space-y-1">
+          <div>
             {projects.map((project, i) => (
               <motion.a
                 key={project.name}
@@ -101,8 +101,8 @@ export default function Home() {
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-                className="group flex items-center justify-between py-3 px-3 -mx-3 rounded-lg hover:bg-ring transition-colors"
+                transition={{ duration: 0.3, delay: i * 0.04 }}
+                className="group flex items-center justify-between py-3 px-3 -mx-3 rounded-md hover:bg-ring transition-colors"
                 data-interactive
                 data-cursor={`${project.name} →`}
               >
