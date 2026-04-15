@@ -29,7 +29,7 @@ export async function GET() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         query: QUERY,
-        variables: { profileId: PROFILE_ID, limit: 5, offset: 0 },
+        variables: { profileId: PROFILE_ID, limit: 1, offset: 0 },
       }),
       next: { revalidate: 3600 },
     });
