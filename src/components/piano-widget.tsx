@@ -37,6 +37,7 @@ export function PianoWidget() {
       rel="noopener noreferrer"
       className="block border border-border rounded-xl p-4 hover:bg-ring transition-colors"
       data-interactive
+      data-cursor="Apple Music →"
     >
       <div className="flex items-center gap-2 mb-3">
         <span className="text-sm">🎹</span>

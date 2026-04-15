@@ -36,6 +36,7 @@ export function ListeningWidget() {
       rel="noopener noreferrer"
       className="block border border-border rounded-xl p-4 hover:bg-ring transition-colors"
       data-interactive
+      data-cursor="Spotify →"
     >
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">

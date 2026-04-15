@@ -73,11 +73,12 @@ export default function Home() {
             <p className="text-[15px] leading-relaxed text-muted mt-4">
               Currently fully focused on{" "}
               <a
-                href="https://permanent.design"
+                href="https://www.permanent.is"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
                 data-interactive
+                data-cursor="Permanent →"
               >
                 Permanent
               </a>
@@ -103,6 +104,7 @@ export default function Home() {
                 transition={{ duration: 0.3, delay: i * 0.05 }}
                 className="group flex items-center justify-between py-3 px-3 -mx-3 rounded-lg hover:bg-ring transition-colors"
                 data-interactive
+                data-cursor={`${project.name} →`}
               >
                 <div>
                   <span className="text-sm font-medium text-foreground">
@@ -144,6 +146,7 @@ export default function Home() {
             href="/fun"
             className="group flex items-center justify-between border border-dashed border-border rounded-xl p-6 hover:bg-ring transition-colors"
             data-interactive
+            data-cursor="Fun →"
           >
             <p className="text-sm text-muted">
               Experiments, components, and interactions.
@@ -171,6 +174,7 @@ export default function Home() {
               href="mailto:david@bielenbeck.me"
               className="inline-flex items-center gap-2 text-sm font-medium text-foreground border border-border rounded-lg px-4 py-2 hover:bg-ring transition-colors"
               data-interactive
+              data-cursor="Email →"
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -185,6 +189,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm text-muted border border-border rounded-lg px-4 py-2 hover:text-foreground hover:bg-ring transition-colors"
                 data-interactive
+                data-cursor={`${social.name} →`}
               >
                 {social.name}
               </a>
