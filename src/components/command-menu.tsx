@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { useTheme } from "next-themes";
@@ -108,6 +108,8 @@ const LINKS = [
 
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
   const { theme, setTheme } = useTheme();
   const router = useRouter();
 
@@ -129,6 +131,47 @@ export function CommandMenu() {
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 100);
   }, []);
+
+  // Auto-focus & reset search when menu opens
+  useEffect(() => {
+    if (open) {
+      setSearch("");
+      // Focus on next tick after framer-motion mounts the element
+      requestAnimationFrame(() => inputRef.current?.focus());
+    }
+  }, [open]);
+
+  // Handle single-key shortcuts when input is empty
+  const handleDialogKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      // Only intercept single character keys when input is empty
+      if (search !== "" || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key.length !== 1) return;
+
+      const key = e.key.toLowerCase();
+
+      const section = SECTIONS.find((s) => s.shortcut.toLowerCase() === key);
+      if (section) {
+        e.preventDefault();
+        scrollTo(section.id);
+        return;
+      }
+
+      const page = PAGES.find((p) => p.shortcut.toLowerCase() === key);
+      if (page) {
+        e.preventDefault();
+        setOpen(false);
+        router.push(page.path);
+        return;
+      }
+    },
+    [search, scrollTo, router]
+  );
 
   const itemClass =
     "flex items-center gap-2 px-2 py-1.5 rounded-sm text-sm text-foreground data-[selected=true]:bg-ring data-[selected=true]:text-foreground transition-colors outline-none";
@@ -154,9 +197,7 @@ export function CommandMenu() {
           >
             <Command
               className="bg-card border border-border rounded-lg overflow-hidden shadow-2xl"
-              onKeyDown={(e) => {
-                if (e.key === "Escape") setOpen(false);
-              }}
+              onKeyDown={handleDialogKeyDown}
             >
               {/* Input with search icon */}
               <div className="flex items-center border-b border-border px-3" data-cmdk-input-wrapper>
@@ -164,6 +205,10 @@ export function CommandMenu() {
                   <Icon.Search />
                 </span>
                 <Command.Input
+                  ref={inputRef}
+                  value={search}
+                  onValueChange={setSearch}
+                  autoFocus
                   placeholder="Type a command or search..."
                   className="flex h-11 w-full bg-transparent py-3 text-sm text-foreground placeholder:text-muted outline-none disabled:cursor-not-allowed disabled:opacity-50"
                 />

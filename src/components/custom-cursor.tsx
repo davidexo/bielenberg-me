@@ -65,31 +65,53 @@ export function CustomCursor() {
         />
       </motion.div>
 
-      {/* Hover cursor — orange dot + optional context label */}
+      {/* Hover cursor — orange dot when no label */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] flex items-center"
+        className="pointer-events-none fixed top-0 left-0 z-[9999]"
         style={{ x, y }}
         animate={{
-          opacity: visible && hovering ? 1 : 0,
-          scale: hovering ? 1 : 0.6,
+          opacity: visible && hovering && !label ? 1 : 0,
+          scale: hovering && !label ? 1 : 0.6,
         }}
         transition={{ duration: 0.15 }}
       >
         <div
-          className="rounded-full bg-[#FF6A00] shrink-0"
+          className="rounded-full bg-[#FF6A00]"
           style={{ width: 15, height: 15, marginLeft: -7.5, marginTop: -7.5 }}
         />
-        {label && (
-          <motion.span
-            initial={{ opacity: 0, x: -4 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="ml-2 -mt-1 px-2 py-0.5 rounded-md bg-[#FF6A00] text-white text-xs font-medium whitespace-nowrap"
+      </motion.div>
+
+      {/* Hover cursor — single pill with icon + label */}
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[9999]"
+        style={{ x, y }}
+        animate={{
+          opacity: visible && hovering && !!label ? 1 : 0,
+          scale: hovering && !!label ? 1 : 0.85,
+        }}
+        transition={{ duration: 0.15 }}
+      >
+        <div
+          className="flex items-center gap-1.5 bg-[#FF6A00] text-white pl-2 pr-2.5 py-1 rounded-full whitespace-nowrap shadow-lg"
+          style={{ marginLeft: 6, marginTop: 6 }}
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            {label}
-          </motion.span>
-        )}
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+          <span className="text-xs font-medium leading-none">
+            {label?.replace(/\s*→\s*$/, "")}
+          </span>
+        </div>
       </motion.div>
     </>
   );
