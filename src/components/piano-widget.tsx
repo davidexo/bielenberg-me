@@ -7,7 +7,11 @@ const CURRENT_SONG = {
   title: "The Shire",
   artist: "Howard Shore",
   context: "The Lord of the Rings",
+  // Used to look up the album cover via iTunes Search.
   searchQuery: "The Shire Howard Shore Lord of the Rings",
+  // Spotify link for the track (search URL works without an ID).
+  spotifyUrl:
+    "https://open.spotify.com/search/The%20Shire%20Howard%20Shore",
 };
 
 interface CoverResult {
@@ -32,12 +36,12 @@ export function PianoWidget() {
 
   return (
     <a
-      href={cover?.url ?? "#"}
-      target={cover?.url ? "_blank" : undefined}
+      href={CURRENT_SONG.spotifyUrl}
+      target="_blank"
       rel="noopener noreferrer"
       className="block border border-border rounded-xl p-4 hover:bg-ring transition-colors"
       data-interactive
-      data-cursor="Apple Music →"
+      data-cursor="Spotify →"
     >
       <div className="flex items-center gap-2 mb-3">
         <span className="text-sm">🎹</span>
