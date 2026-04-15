@@ -69,19 +69,19 @@ export function CustomCursor() {
         />
       </motion.div>
 
-      {/* Hover cursor (smaller, orange) */}
+      {/* Hover cursor (50% larger than default, orange) */}
       <motion.div
         className="pointer-events-none fixed top-0 left-0 z-[9999]"
         style={{ x, y }}
         animate={{
           opacity: visible && hovering ? 1 : 0,
-          scale: hovering ? 1 : 0.5,
+          scale: hovering ? 1 : 0.6,
         }}
         transition={{ duration: 0.15 }}
       >
         <div
           className="rounded-full bg-[#FF6A00]"
-          style={{ width: 6, height: 6, marginLeft: -3, marginTop: -3 }}
+          style={{ width: 15, height: 15, marginLeft: -7.5, marginTop: -7.5 }}
         />
       </motion.div>
     </>
