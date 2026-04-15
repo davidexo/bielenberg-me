@@ -102,25 +102,14 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: i * 0.04 }}
-                className="group flex items-center justify-between py-3 px-3 -mx-3 rounded-md hover:bg-ring transition-colors"
+                className="flex items-center py-3 px-3 -mx-3 rounded-md hover:bg-ring transition-colors"
                 data-interactive
                 data-cursor={`${project.name} →`}
               >
-                <div>
-                  <span className="text-sm font-medium text-foreground">
-                    {project.name}
-                  </span>
-                  <span className="text-sm text-muted ml-3">{project.description}</span>
-                </div>
-                <svg
-                  className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
+                <span className="text-sm font-medium text-foreground">
+                  {project.name}
+                </span>
+                <span className="text-sm text-muted ml-3">{project.description}</span>
               </motion.a>
             ))}
           </div>

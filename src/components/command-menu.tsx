@@ -114,15 +114,54 @@ export function CommandMenu() {
   const router = useRouter();
 
   useEffect(() => {
+    const isTyping = () => {
+      const el = document.activeElement as HTMLElement | null;
+      if (!el) return false;
+      const tag = el.tagName;
+      return (
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT" ||
+        el.isContentEditable
+      );
+    };
+
     const down = (e: KeyboardEvent) => {
+      // ⌘K / Ctrl+K toggles the menu (always works, even when typing)
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((o) => !o);
+        return;
+      }
+
+      // All other shortcuts: skip if user is typing in any input
+      if (isTyping()) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key.length !== 1) return;
+
+      const key = e.key.toLowerCase();
+
+      const section = SECTIONS.find((s) => s.shortcut.toLowerCase() === key);
+      if (section) {
+        e.preventDefault();
+        setOpen(false);
+        const el = document.getElementById(section.id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      const page = PAGES.find((p) => p.shortcut.toLowerCase() === key);
+      if (page) {
+        e.preventDefault();
+        setOpen(false);
+        router.push(page.path);
+        return;
       }
     };
+
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [router]);
 
   const scrollTo = useCallback((id: string) => {
     setOpen(false);
