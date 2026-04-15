@@ -49,26 +49,41 @@ export function CustomCursor() {
     return null;
   }
 
+  // Default cursor uses mix-blend-difference so it inverts on light/dark.
+  // Hover cursor is a smaller solid orange dot (no blend mode so the color is true).
   return (
-    <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[9999] mix-blend-difference"
-      style={{ x, y }}
-      animate={{
-        opacity: visible ? 1 : 0,
-        scale: hovering ? 1.8 : 1,
-      }}
-      transition={{ scale: { duration: 0.2 }, opacity: { duration: 0.15 } }}
-    >
-      <div
-        className="rounded-full bg-white"
-        style={{
-          width: hovering ? 20 : 10,
-          height: hovering ? 20 : 10,
-          marginLeft: hovering ? -10 : -5,
-          marginTop: hovering ? -10 : -5,
-          transition: "width 0.2s, height 0.2s, margin 0.2s",
+    <>
+      {/* Default cursor */}
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[9999] mix-blend-difference"
+        style={{ x, y }}
+        animate={{
+          opacity: visible && !hovering ? 1 : 0,
+          scale: 1,
         }}
-      />
-    </motion.div>
+        transition={{ duration: 0.15 }}
+      >
+        <div
+          className="rounded-full bg-white"
+          style={{ width: 10, height: 10, marginLeft: -5, marginTop: -5 }}
+        />
+      </motion.div>
+
+      {/* Hover cursor (smaller, orange) */}
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[9999]"
+        style={{ x, y }}
+        animate={{
+          opacity: visible && hovering ? 1 : 0,
+          scale: hovering ? 1 : 0.5,
+        }}
+        transition={{ duration: 0.15 }}
+      >
+        <div
+          className="rounded-full bg-[#FF6A00]"
+          style={{ width: 6, height: 6, marginLeft: -3, marginTop: -3 }}
+        />
+      </motion.div>
+    </>
   );
 }
